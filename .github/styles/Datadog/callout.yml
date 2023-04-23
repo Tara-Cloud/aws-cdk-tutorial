@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: "https://datadoghq.atlassian.net/wiki/spaces/TRAIN/pages/2359329123/Training+Style+Guide#Conventions"
+ignorecase: true
+level: warning
+action:
+  name: replace
+swap:
+  'Note that|Note:': '> **Note**:'
