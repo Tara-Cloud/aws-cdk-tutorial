@@ -1,10 +1,14 @@
 # Getting Started with the Amazon Cloud Development Kit (AWS CDK)
 
 ## The Power of CDK
+- security
+- cost savings
+- best practices built in
 
 ## Pre-Requisites
 - [ ] An [IDE](https://www.codecademy.com/article/what-is-an-ide) of your choice.  We will be editing code throughout this tutorial.  One great option is [VS Code](https://code.visualstudio.com/download).
 - [ ] AWS Account
+-- :lightbulb: Security tip: root credentials to deploy resources is not a good practice
 - [ ] Credentials for a Role/User with at least the following priviledges...
 - [ ] [AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
