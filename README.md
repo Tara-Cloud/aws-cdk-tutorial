@@ -1,4 +1,10 @@
 # Deploy a Serverless Web Application using the Amazon Cloud Development Kit (AWS CDK)
+
+>***Author's Note:*** 
+>The intended audience for this tutorial is developers, cloud architects, and DevOps professionals who already have a basic understanding of cloud computing and have an existing AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
+
+>I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this document.  
+
 The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud without manually deploying infrastructure.
 
 ***In this tutorial we will learn:***
@@ -9,16 +15,9 @@ The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infr
 
 Once we understand what the AWS CDK is all about, we will use our new CDK skills to deploy a website to the cloud!
 
-***Author's Note:***
-The intended audience for this tutorial is developers, cloud architects, and DevOps professionals who already have a basic understanding of cloud computing and have an existing AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
-
-I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this document.  
-
 **Estimated Time to Complete**: 10-15 min (not including prerequisites)
 
 ## The Power of CDK
-
-#TO-DO
 
 - security
 - cost savings
@@ -40,6 +39,8 @@ Now that we've got the basic terminology down, consider what this architecture c
 ![img](readme-assets/example_serverless_architecture.png)
 
 > :bulb: This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
+
+What if we wanted our developers to be able to d
 
 ## Let's Build!
 
