@@ -1,4 +1,6 @@
 # Getting Started with the Amazon Cloud Development Kit (AWS CDK)
+- The CDK ...
+- In this tutorial we will...
 
 ## The Power of CDK
 - security
@@ -19,7 +21,7 @@
 ### Install the AWS CDK Toolkit
 The AWS CDK Toolkit is a command-line utility that you will use to orchestrate your CDK applications.  Windows, Mac, and Linux users can install the CDK Toolkit by running the following command:
 
-*(Note: Windows users should run this as an Aministrator and Mac/Linux users should run this using `sudo`)*
+*(Note: Windows users should run this command as an Aministrator and Mac/Linux users should run this command using `sudo`)*
 
 `npm install -g aws-cdk`
 
@@ -47,8 +49,15 @@ The `cdk init` command creates a new, empty CDK project for us.  Run `cdk init -
 
 #TO-DO Example Output
 
-Let's explore our new CDK Python application:
-
+Let's explore our new CDK Python application!
+> If you havent already, it's a good idea to open your project directory in your IDE of choice to explore the contents.
+![image](readme-assets/cdk_python_project_structure.png)
+As you can see, in the processes of initializing our project the CDK Toolkit has created several nice components for us.  For now we will focus on the most critical files.  [Read more about CDK project structure and components here](https://cdkworkshop.com/30-python/20-create-project/300-structure.html).
+- **app.py**: the entry point for our CDK application, similar to a "main" file.
+- **cdk_static_website/cdk_static_website.py**: a Python file that creates a custom CDK stack for use in your CDK application.  We will learn more about stacks when we model and deploy our application in step 4 of this tutorial.  A production CDK application will likely grow to have several different files defining several different stacks. 
+- **cdk.json** A configuration file for CDK that defines several aspects of our application and how it should operate.  
+- **README.md**: A README describing our CDK application and basic deployment steps.  Notice we can find several useful tips and CDK commands prepopulated in the README by the CDK toolkit.  Eventually we should customize this README file to be specific to the CDK application we build.
+- Notice that the CDK toolkit also initialized a git repository for us in the project directory and populated a .gitignore file that we can modify as needed.
 
 ## Step 3: Bootstrap Your Account
 
