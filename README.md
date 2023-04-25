@@ -5,6 +5,8 @@
 - cost savings
 - best practices built in
 
+## What We Are Building
+
 ## Pre-Requisites
 - [ ] An [IDE](https://www.codecademy.com/article/what-is-an-ide) of your choice.  We will be editing code throughout this tutorial.  One great option is [VS Code](https://code.visualstudio.com/download).
 - [ ] AWS Account
@@ -15,15 +17,40 @@
 
 ## Step 1: Configure Your Dev Environment
 ### Install the AWS CDK Toolkit
-The AWS CDK Toolkit is a command-line utility that you will use to orchestrate your CDK applications.  To install the CDK toolkit run the following commands.
-(Note: Windows users should run this as an Aministrator and Mac/Linux users should run this using `sudo`)
+The AWS CDK Toolkit is a command-line utility that you will use to orchestrate your CDK applications.  Windows, Mac, and Linux users can install the CDK Toolkit by running the following command:
+
+*(Note: Windows users should run this as an Aministrator and Mac/Linux users should run this using `sudo`)*
+
 `npm install -g aws-cdk`
 
-Verify your installation by running `cdk --version`
+Verify your AWS CDK Toolkit installation by running 
+`cdk --version`
 
-## Step 2: Bootstrap Your Account
+### Select Your Programming Language
+AWS CDK offers you the opportunity to model and deploy cloud infrastructure using your object-oriented programming language of choice - no need to learn new syntax!  CDK is currently available for TypeScript, JavaScript, Python, Java, C#, and Go with more languages to come.  
 
-## Step 3: Create Your First CDK Application
+Depending on your choice of programming language, you may encounter additional prequisites.  For this tutorial we will be using Python and we need the following tools installed on our system:
+- [ ] [Python version 3.6 or greater](https://www.python.org/downloads/)
+- [ ] [Python package installer (pip)](https://pip.pypa.io/en/stable/installation/)
+
+Verify your Python installation by running 
+`python --version` or `python3 --version`
+
+Verify your pip installation by running #TO-DO
+
+## Step 2: Create Your First CDK Application
+Create an empty directory where your CDK application will live:
+`mkdir cdk_static_website && cd cdk_static_website`
+
+The `cdk init` command creates a new, empty CDK project for us.  Run `cdk init --help` to see the options available to us when we create a new project.  For this tutorial we will create a new CDK project using a sample-app template and we will build our CDK application using Python.  Therefore, our `cdk init` command looks like this:
+`cdk init sample-app --language python`
+
+#TO-DO Example Output
+
+Let's explore our new CDK Python application:
+
+
+## Step 3: Bootstrap Your Account
 
 ## Step 4: Deploy Your Application to the Cloud 
 
@@ -37,9 +64,9 @@ Verify your installation by running `cdk --version`
 - level 3 s3 website construct
 
 ## Become a Pro
+- [CDK on GitHub](https://github.com/aws/aws-cdk)
 - [The CDK Workshop](https://cdkworkshop.com/)
 - [AWS CDK User Guide](https://docs.aws.amazon.com/CDK/latest/userguide)
-
 
 #TO-DO:
 - Example complete app code
