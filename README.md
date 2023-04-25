@@ -21,11 +21,13 @@ Once we understand what the AWS CDK is all about, we will use our new CDK skills
 
 A CDK application defines a cloud application or cloud infrastructure configuration.  We can deploy the exact same CDK application one time or hundreds of times.  This functionality is powerful for several reasons:
 
-- :shield: **security**
-- :moneybag: **cost savings** 
-- :detective: **best practices built in**
+- :shield: **security**: Define resuable components that are modeled to meet security best practices as well as your organization's security and compliance requirements.  Minimize human error by modeling and sharing vetted configurations via the CDK.
+- :moneybag: **cost savings**: Use the AWS CDK to provision and destory entire cloud architectures within seconds.  Destroy cloud infrastructure when it's not needed to avoid paying for unnecesary resources.  Use the AWS CDK to re-deploy the exact same infrastructure in seconds when it's needed again.
+- :detective: **best practices built in**: Create and reuse patterns built using cloud best practices.  Take advantage of 1000+ high-quality [existing, open-source CDK libraries](https://constructs.dev/) to deploy common cloud infrastructure patterns.
 
-Imagine your company needs a complicated and highly secure networking architecture to be deployed in hundreds of different AWS cloud environments around the world.  Manually configuring and deploying this network infrastructure hundreds of times will be time consuming and prone to human error.  With the AWS CDK we can create one CDK application that models the network architecture perfectly. Our CDK application will be written to ens
+Imagine your company needs a complicated and highly secure networking architecture to be deployed in hundreds of different AWS cloud environments around the world.  Manually configuring and deploying this infrastructure hundreds of times will be time consuming, expensive, and prone to human error.  With the AWS CDK we can create one CDK application that models the network architecture perfectly. Our CDK application will be written to ensure every organizational security requirement is met.  We can then use this CDK application to deploy our networking resources in the exact same configuration in hundreds of accounts globally with a few simple commands.  If we need to update our configuration, we can use our CDK application to roll out the exact same update to every account at the same time.  We can even use our favorite CI/CD tooling to control this workflow.
+
+Imagine our company operates in some countries year-round and some countries only for half of the year.  With CDK we can tear down and redeploy our networking infrastructure as often as we want and with very little effort.  We can save a lot of money by destroying our cloud resources whenever they are not being used.  We can also use automation to redeploy our CDK resources on a schedule or based on user demand signals with no human intervention needed. Now we are starting to see the power of the AWS CDK!
 
 ## Constructs, Stacks, and Apps
 
@@ -44,11 +46,14 @@ Now that we've got the basic terminology down, consider what this architecture c
 
 > :bulb: This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
 
-What if we wanted our developers to be able to d
+Let's say we like this serverless architecture a lot and we know our team will want to deploy many similar architectures in the future.  Or maybe we need to deploy our serverless application seperately in several different countries.  Or maybe both!  Sounds like a perfect use case for the AWS CDK.  Below is an example of how we can organize our serverless web application into a CDK application using constructs, stacks, and apps.
 
-## Let's Build!
+![img](readme-assets/cdk_application_serverless_web_app_diagram.png)
+> Stacks promote modularity and re-use.  Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem.  
 
-Now that we've covered the basics
+## Let's Build a CDK App!
+
+Now that we know what the AWS CDK is all about, let's get hands on and deploy our first CDK application.  In this lab we 
 
 ### Pre-Requisites
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
@@ -190,5 +195,6 @@ Our s3 website is looking great so far.
 
 ## Become a Pro
 - [AWS CDK on GitHub](https://github.com/aws/aws-cdk)
-- [The CDK Workshop](https://cdkworkshop.com/)
 - [AWS CDK User Guide](https://docs.aws.amazon.com/CDK/latest/userguide)
+- [The CDK Workshop](https://cdkworkshop.com/)
+- [AWS CDK FAQs](https://aws.amazon.com/cdk/faqs/)
