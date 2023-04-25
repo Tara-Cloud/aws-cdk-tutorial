@@ -50,7 +50,7 @@ The `cdk init` command creates a new, empty CDK project for us.  Run `cdk init -
 #TO-DO Example Output
 
 Let's explore our new CDK Python application!
-> If you havent already, it's a good idea to open your project directory in your IDE of choice to explore the contents.
+> If you havent already, it's a good idea to open your project directory in your IDE of choice to explore the contents. >
 ![image](readme-assets/cdk_python_project_structure.png)
 As you can see, in the processes of initializing our project the CDK Toolkit has created several nice components for us.  For now we will focus on the most critical files.  [Read more about CDK project structure and components here](https://cdkworkshop.com/30-python/20-create-project/300-structure.html).
 - **app.py**: the entry point for our CDK application, similar to a "main" file.
@@ -58,6 +58,8 @@ As you can see, in the processes of initializing our project the CDK Toolkit has
 - **cdk.json** A configuration file for CDK that defines several aspects of our application and how it should operate.  
 - **README.md**: A README describing our CDK application and basic deployment steps.  Notice we can find several useful tips and CDK commands prepopulated in the README by the CDK toolkit.  Eventually we should customize this README file to be specific to the CDK application we build.
 - Notice that the CDK toolkit also initialized a git repository for us in the project directory and populated a .gitignore file that we can modify as needed.
+
+Now that we are familiar with our project structure, let's start building!
 
 ## Step 3: Bootstrap Your Account
 
