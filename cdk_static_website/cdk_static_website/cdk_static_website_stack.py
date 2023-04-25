@@ -1,26 +1,24 @@
 from constructs import Construct
-from aws_cdk import (
-    Duration,
+from aws_cdk import ( 
     Stack,
-    aws_iam as iam,
-    aws_sqs as sqs,
-    aws_sns as sns,
-    aws_sns_subscriptions as subs,
+    aws_s3 as s3, 
+    aws_s3_deployment as s3_deploy
 )
-
 
 class CdkStaticWebsiteStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-
-        queue = sqs.Queue(
-            self, "CdkStaticWebsiteQueue",
-            visibility_timeout=Duration.seconds(300),
+        
+        #create a s3 bucket to host our static website
+        static_website_bucket = s3.Bucket(self, "StaticS3Bucket",
+            access_control=s3.BucketAccessControl.PUBLIC_READ,
+            website_index_document='index.html',
+            website_error_document='error.html'
         )
 
-        topic = sns.Topic(
-            self, "CdkStaticWebsiteTopic"
+        #upload the html documents from s3-assets/ directory to the s3 bucket
+        deployment = s3_deploy.BucketDeployment(self, "DeployWebsite",
+            sources=[s3_deploy.Source.asset("../s3-assets")],
+            destination_bucket=static_website_bucket
         )
-
-        topic.add_subscription(subs.SqsSubscription(queue))
