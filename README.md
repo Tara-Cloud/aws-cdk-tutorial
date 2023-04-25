@@ -11,7 +11,7 @@
 
 ## Pre-Requisites
 - [ ] An [IDE](https://www.codecademy.com/article/what-is-an-ide) of your choice.  We will be editing code throughout this tutorial.  One great option is [VS Code](https://code.visualstudio.com/download).
-- [ ] AWS Account
+- [ ] An active AWS Account and a basic understanding of [AWS regions](https://cloudacademy.com/blog/aws-regions-and-availability-zones-the-simplest-explanation-you-will-ever-find-around/).
 -- :lightbulb: Security tip: root credentials to deploy resources is not a good practice
 - [ ] Credentials for a Role/User with at least the following priviledges...
 - [ ] [AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
@@ -80,8 +80,13 @@ Now that we are in our virtual environment we should install the required Python
 
 Now that we are familiar with our project structure and we have installed the required modules, let's start building!
 
-## Step 3: Bootstrap Your Account
+## Step 3: Bootstrap Your AWS Account
 
+Our next step is to prepare our AWS environment to work with the AWS CDK.  The AWS environment is a combincation of the AWS environment and region we are provisioning resources in.  We do this using a process called CDK Bootstrap.  CDK Bootstrap will create several resources in our AWS account that the CDK uses behind the scenes to build our applications.  Bootstrapping an AWS environment is a one-time process.  You will not need to run CDK Bootstrap again until you start deploying CDK applications in different AWS regions or a different AWS account.[Read more about CDK Bootstrap](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
+
+Bootstrap your AWS environment by running: 
+
+`cdk bootstrap`
 
 ## Step 4: Model and Deploy Your Cloud Infrastructure 
 
