@@ -1,7 +1,7 @@
 # Deploy a Serverless Web Application using the Amazon Cloud Development Kit (AWS CDK)
-The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code and provision cloud infrastructure programatically.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud.
+The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud without manually deploying infrastructure.
 
-***In this tutorial we will learn about:***
+***In this tutorial we will learn:***
 - The value proposition of the AWS CDK
 - The bulding blocks of AWS CDK applications (Constructs, Apps, and Stacks)
 - The basic structure of a AWS CDK projects
@@ -34,6 +34,12 @@ CDK applications are created using three important concepts: constructs, stacks,
 ![img](readme-assets/cdk_application_diagram.png)
 
 > A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
+
+Now that we've got the basic terminology down, consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture.
+
+![img](example_serverless_architecture)
+
+> :bulb: This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
 
 ## Let's Build!
 
