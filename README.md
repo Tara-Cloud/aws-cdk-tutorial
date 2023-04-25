@@ -38,9 +38,9 @@ CDK applications are created using three important concepts: constructs, stacks,
 
 ![img](readme-assets/cdk_application_diagram.png)
 
-> A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
+> :bulb: A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
 
-Now that we've got the basic terminology down, consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture.
+Consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture:
 
 ![img](readme-assets/example_serverless_architecture.png)
 
@@ -49,7 +49,9 @@ Now that we've got the basic terminology down, consider what this architecture c
 Let's say we like this serverless architecture a lot and we know our team will want to deploy many similar architectures in the future.  Or maybe we need to deploy our serverless application seperately in several different countries.  Or maybe both!  Sounds like a perfect use case for the AWS CDK.  Below is an example of how we can organize our serverless web application into a CDK application using constructs, stacks, and apps.
 
 ![img](readme-assets/cdk_application_serverless_web_app_diagram.png)
-> Stacks promote modularity and re-use.  Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem.  
+> :bulb: Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  
+
+Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
 
 ## Let's Build a CDK App!
 
