@@ -1,25 +1,43 @@
 # Deploy a Serverless Web Application using the Amazon Cloud Development Kit (AWS CDK)
-The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code and provision cloud infrastructure programatically.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable and secure applications in the AWS cloud.
+The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code and provision cloud infrastructure programatically.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud.
 
-***In the tutorial we will:***
-- Learn the value proposition of the AWS CDK
-- Explore the structure of a AWS CDK Application and understand the main compenents of the AWS CDK
-- Use the AWS CDK to deploy a website to the cloud
+***In this tutorial we will learn about:***
+- The value proposition of the AWS CDK
+- The bulding blocks of AWS CDK applications (Constructs, Apps, and Stacks)
+- The basic structure of a AWS CDK projects
+- The lifecycle of a CDK application
+
+Once we understand what the AWS CDK is all about, we will use our new CDK skills to deploy a website to the cloud!
 
 ***Author's Note:***
-The intended audience for this tutorial is developers, cloud architects, and/or DevOps professionals who already have a basic understanding of cloud computing and have already set up an AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
+The intended audience for this tutorial is developers, cloud architects, and DevOps professionals who already have a basic understanding of cloud computing and have an existing AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
 
 I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this document.  
+
 **Estimated Time to Complete**: 10-15 min (not including prerequisites)
 
 ## The Power of CDK
+
+#TO-DO
+
 - security
 - cost savings
 - best practices built in
 
-## CDK Project Structure
+## Constructs, Stacks, and Apps
+
+CDK applications are created using three important concepts: constructs, stacks, and apps.
+- **Constructs**: Constructs are the building blocks of your CDK application.  A construct represents a *cloud component* that will be deployed in your cloud environment.  A cloud component could be one resource - such as one [Amazon S3 bucket](https://aws.amazon.com/s3/) - or a cloud component could resprent a higher-level abstraction such as an [application load balancer fronting containers running in the Amazon Elastic Container Service](https://docs.aws.amazon.com/solutions/latest/constructs/aws-alb-fargate.html).  CDK Constructs are powerful because they can be used to define common infrastructure patterns using best practices - once defined CDK Constructs make best practice patterns easily sharable and repeatable.
+- **Stacks**: Stacks are the unit of deployment in the AWS CDK.  Every AWS resource defined using a CDK construct must be definied within the scope of a stack.  When you deploy your CDK application you will choose whether to deploy every stack in the application, only certain stacks in the application, or even multiple copies of the same stack but deployed to different environments.
+- **Apps**: A CDK application or app is a container for one or more stacks.  Stacks within the same CDK app can exchange information with one another.  A powerful feature of CDK is automatic dependency management between stacks - if one construct in Stack A is dependent on the deployment of a construct in Stack B - CDK will automatically deploy the stacks in the neccesary order to fulfill that dependency.  
+
+![img](readme-assets/cdk_application_diagram.png)
+
+> A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
 
 ## Let's Build!
+
+Now that we've covered the basics
 
 ### Pre-Requisites
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
