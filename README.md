@@ -3,14 +3,14 @@
 >***Author's Note:*** 
 >The intended audience for this tutorial is developers, cloud architects, and DevOps professionals who already have a basic understanding of cloud computing and have an existing AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
 
->I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this document.  
+>I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this tutorial.  
 
-The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud without manually deploying infrastructure.
+The [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) is a framework used to define cloud infrastructure as code.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud without manually deploying infrastructure.
 
 ***In this tutorial we will learn:***
 - The value proposition of the AWS CDK
 - The bulding blocks of AWS CDK applications (Constructs, Apps, and Stacks)
-- The basic structure of a AWS CDK projects
+- The basic structure of AWS CDK projects
 - The lifecycle of a CDK application
 
 Once we understand what the AWS CDK is all about, we will use our new CDK skills to deploy a website to the cloud!
@@ -19,9 +19,13 @@ Once we understand what the AWS CDK is all about, we will use our new CDK skills
 
 ## The Power of CDK
 
-- security
-- cost savings
-- best practices built in
+A CDK application defines a cloud application or cloud infrastructure configuration.  We can deploy the exact same CDK application one time or hundreds of times.  This functionality is powerful for several reasons:
+
+- :shield: **security**
+- :moneybag: **cost savings** 
+- :detective: **best practices built in**
+
+Imagine your company needs a complicated and highly secure networking architecture to be deployed in hundreds of different AWS cloud environments around the world.  Manually configuring and deploying this network infrastructure hundreds of times will be time consuming and prone to human error.  With the AWS CDK we can create one CDK application that models the network architecture perfectly. Our CDK application will be written to ens
 
 ## Constructs, Stacks, and Apps
 
