@@ -41,6 +41,7 @@ Verify your Python installation by running
 Verify your pip installation by running #TO-DO
 
 ## Step 2: Create Your First CDK Application
+### Intialize a CDK Project
 Create an empty directory where your CDK application will live:
 `mkdir cdk_static_website && cd cdk_static_website`
 
@@ -53,18 +54,36 @@ Let's explore our new CDK Python application!
 > If you havent already, now is a good time to open our IDE.  If you are using VS Code you can open the project directory in VS code by running `code .` 
 
 ![image](readme-assets/cdk_python_project_structure.png)
+
 As you can see, in the processes of initializing our project the CDK Toolkit has created several nice components for us.  For now we will focus on the most critical files.  [Read more about CDK project structure and components here](https://cdkworkshop.com/30-python/20-create-project/300-structure.html).
 - ***app.py***: the entry point for our CDK application, similar to a "main" file.
 - ***cdk_static_website/cdk_static_website.py***: a Python file that creates a custom CDK stack for use in your CDK application.  We will learn more about stacks when we model and deploy our application in step 4 of this tutorial.  A production CDK application will likely grow to have several different files defining several different stacks. 
 - ***cdk.json*** A configuration file for CDK that defines several aspects of our application and how it should operate.  
 - ***README.md***: A README describing our CDK application and basic deployment steps.  Notice we can find several useful tips and CDK commands prepopulated in the README by the CDK toolkit.  Eventually we should customize this README file to be specific to the CDK application we build.
-- Notice that the CDK toolkit also initialized a **git repository** for us in the project directory and populated a .gitignore file that we can modify as needed.
+- Notice that the CDK toolkit also initialized a ***git repository*** for us in the project directory and populated a .gitignore file that we can modify as needed.
 
-Now that we are familiar with our project structure, let's start building!
+### Activate our virtual environment and install required modules
+Your project contains a .venv directory.  This .venv directory is used to create a Python virtual environment where we can install packages and run our Python application without impacting the Python installation on our system.  [Learn more about virtual environments here](https://docs.python.org/3/tutorial/venv.html).
+
+Let's activate our virtual environment by running the following command, make sure to run this command from within your cdk_static_website/ directory.
+
+Linux/MacOS:
+
+`source .venv/bin/activate`
+
+Mac:
+`.venv\Scripts\activate.bat`
+
+Now that we are in our virtual environment we should install the required Python modules for our project by running
+
+`pip install -r requirements.txt`
+
+Now that we are familiar with our project structure and we have installed the required modules, let's start building!
 
 ## Step 3: Bootstrap Your Account
 
-## Step 4: Deploy Your Application to the Cloud 
+
+## Step 4: Model and Deploy Your Cloud Infrastructure 
 
 ## Step 5: Update Your Application
 
