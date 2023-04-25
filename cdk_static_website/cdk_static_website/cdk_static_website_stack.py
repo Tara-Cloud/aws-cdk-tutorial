@@ -1,5 +1,7 @@
+# type: ignore
+
 from constructs import Construct
-from aws_cdk import ( 
+from aws_cdk_lib import ( 
     Stack,
     aws_s3 as s3, 
     aws_s3_deployment as s3_deploy

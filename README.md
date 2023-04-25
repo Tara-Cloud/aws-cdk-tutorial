@@ -1,21 +1,32 @@
-# Getting Started with the Amazon Cloud Development Kit (AWS CDK)
-- The CDK ...
-- In this tutorial we will...
+# Deploy a Serverless Web Application using the Amazon Cloud Development Kit (AWS CDK)
+The AWS Cloud Development Kit (AWS CDK) is a framework used to define cloud infrastructure as code and provision cloud infrastructure programatically.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable and secure applications in the AWS cloud.
+
+***In the tutorial we will:***
+- Learn the value proposition of the AWS CDK
+- Explore the structure of a AWS CDK Application and understand the main compenents of the AWS CDK
+- Use the AWS CDK to deploy a website to the cloud
+
+***Author's Note:***
+The intended audience for this tutorial is developers, cloud architects, and/or DevOps professionals who already have a basic understanding of cloud computing and have already set up an AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
+
+I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this document.  
+**Estimated Time to Complete**: 10-15 min (not including prerequisites)
 
 ## The Power of CDK
 - security
 - cost savings
 - best practices built in
 
-## What We Are Building
+## CDK Project Structure
 
-## Pre-Requisites
+## Let's Build!
+
+### Pre-Requisites
+- [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
 - [ ] An [IDE](https://www.codecademy.com/article/what-is-an-ide) of your choice.  We will be editing code throughout this tutorial.  One great option is [VS Code](https://code.visualstudio.com/download).
 - [ ] An active AWS Account and a basic understanding of [AWS regions](https://cloudacademy.com/blog/aws-regions-and-availability-zones-the-simplest-explanation-you-will-ever-find-around/).
--- :lightbulb: Security tip: root credentials to deploy resources is not a good practice
-- [ ] Credentials for a Role/User with at least the following priviledges...
 - [ ] [AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
-- [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
+- [ ] The AWS CLI configured with credentials for an IAM user with the `AdministratorAccess` permission policy attached.  
 
 ## Step 1: Configure Your Dev Environment
 ### Install the AWS CDK Toolkit
@@ -38,20 +49,21 @@ Depending on your choice of programming language, you may encounter additional p
 Verify your Python installation by running 
 `python --version` or `python3 --version`
 
-Verify your pip installation by running #TO-DO
-
 ## Step 2: Create Your First CDK Application
 ### Intialize a CDK Project
 Create an empty directory where your CDK application will live:
 `mkdir cdk_static_website && cd cdk_static_website`
 
-The `cdk init` command creates a new, empty CDK project for us.  Run `cdk init --help` to see the options available to us when we create a new project.  For this tutorial we will create a new CDK project using a sample-app template and we will build our CDK application using Python.  Therefore, our `cdk init` command looks like this:
+The `cdk init` command creates a new, empty CDK project.  Run `cdk init --help` to see the options available to us when we create a new project.  
+
+For this tutorial we will create a new CDK project using a sample-app template and we will build our CDK application using Python.  Therefore, our `cdk init` command looks like this:
+
 `cdk init sample-app --language python`
 
 #TO-DO Example Output
 
 Let's explore our new CDK Python application!
-> If you havent already, now is a good time to open our IDE.  If you are using VS Code you can open the project directory in VS code by running `code .` 
+> If you havent already, now is a good time to open your IDE.  If you are using VS Code you can open the project directory in VS code by running `code .` 
 
 ![image](readme-assets/cdk_python_project_structure.png)
 
@@ -71,10 +83,10 @@ Linux/MacOS:
 
 `source .venv/bin/activate`
 
-Mac:
+Windows:
 `.venv\Scripts\activate.bat`
 
-Now that we are in our virtual environment we should install the required Python modules for our project by running
+Once we have activated our virtual environment, we can install the required Python modules for our project by running
 
 `pip install -r requirements.txt`
 
@@ -82,15 +94,63 @@ Now that we are familiar with our project structure and we have installed the re
 
 ## Step 3: Bootstrap Your AWS Account
 
-Our next step is to prepare our AWS environment to work with the AWS CDK.  The AWS environment is a combincation of the AWS environment and region we are provisioning resources in.  We do this using a process called CDK Bootstrap.  CDK Bootstrap will create several resources in our AWS account that the CDK uses behind the scenes to build our applications.  Bootstrapping an AWS environment is a one-time process.  You will not need to run CDK Bootstrap again until you start deploying CDK applications in different AWS regions or a different AWS account.[Read more about CDK Bootstrap](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
+Our next step is to prepare our AWS environment to work with the AWS CDK.  The AWS environment is a combincation of the AWS environment and AWS region where we are provisioning our cloud resources.  We prepare our AWS environment using a process called CDK Bootstrap.  The CDK Bootstrap script will provision several resources in our AWS environment. CDK will rely on these resources behind the scenes when our CDK applications are being deployed.
+
+Bootstrapping an AWS environment is a one-time process.  You will not need to run CDK Bootstrap again until you start deploying CDK applications in different AWS regions or a different AWS account.[Read more about CDK Bootstrap](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
 
 Bootstrap your AWS environment by running: 
 
 `cdk bootstrap`
 
-## Step 4: Model and Deploy Your Cloud Infrastructure 
+Successful output will look like this:
+
+![img](readme-assets/bootstrap_existed_output.png)
+
+## Step 4: Build and Deploy our Application
+
+The unit of deployment in the AWS CDK is called a ***stack***.  Within our CDK stacks we will use Python to define the resources we want to provision in the AWS cloud.  Let's get started by opening `cdk_static_website/cdk_static_website_stack.py`.  The file in it's current state will look something like this:
+![img](readme-assets/cdk_static_website_stack%20_init_view.png)
+
+This example code will deploy two AWS resources: a [Amazon SQS Queue](https://aws.amazon.com/sqs/) and a [Amazon SNS Topic](https://aws.amazon.com/sns/).  Let's delete the existing code in `cdk_static_website_stack.py` and replace it with the following code block:
+
+```
+from constructs import Construct
+from aws_cdk import ( 
+    Stack,
+    aws_s3 as s3, 
+    aws_s3_deployment as s3_deploy
+)
+
+class CdkStaticWebsiteStack(Stack):
+
+    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+        super().__init__(scope, construct_id, **kwargs)
+        
+        #create a s3 bucket to host our static website
+        static_website_bucket = s3.Bucket(self, "StaticS3Bucket",
+            public_read_access=True,
+            block_public_access=s3.BlockPublicAccess(restrict_public_buckets = False),
+            website_index_document='index.html',
+            website_error_document='error.html'
+        )
+
+        #upload the html documents from s3-assets/ directory to the s3 bucket
+        deployment = s3_deploy.BucketDeployment(self, "DeployWebsite",
+            sources=[s3_deploy.Source.asset("../s3-assets")],
+            destination_bucket=static_website_bucket
+        )
+```
+
+This block of code imports several CDK modules and then uses those modules to model cloud infrastructure.  Specifcally, we are defining the CdkStaticWebsiteStack.  The CdkStaticWebsiteStack will include two constructs:
+- a [s3bucket construct](https://docs.aws.amazon.com/cdk/api/v1/python/aws_cdk.aws_s3/Bucket.html) configured with the neccesary settings to support static website hosting.  This construct will create a new s3 Bucket to our AWS cloud environment.
+> [Read more about s3 Buckets](https://aws.amazon.com/s3/)
+- a [BucketDeployment construct](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_s3_deployment/BucketDeployment.html) which is used to upload assets to our newly created bucket.  In this case we will use the BucketDeployment construct to upload the html files we want to serve from our bucket.
+
+Open the app.py file located in the root of our project directory.  
 
 ## Step 5: Update Your Application
+
+Our s3 website is looking great so far.  
 
 ## Step 6: Destroy Your Application
 
@@ -100,11 +160,6 @@ Bootstrap your AWS environment by running:
 - level 3 s3 website construct
 
 ## Become a Pro
-- [CDK on GitHub](https://github.com/aws/aws-cdk)
+- [AWS CDK on GitHub](https://github.com/aws/aws-cdk)
 - [The CDK Workshop](https://cdkworkshop.com/)
 - [AWS CDK User Guide](https://docs.aws.amazon.com/CDK/latest/userguide)
-
-#TO-DO:
-- Example complete app code
-- Example skeleton app code (with comments)
-- Siren note around public access step 
