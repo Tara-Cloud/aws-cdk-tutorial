@@ -12,7 +12,8 @@ class CdkStaticWebsiteStack(Stack):
         
         #create a s3 bucket to host our static website
         static_website_bucket = s3.Bucket(self, "StaticS3Bucket",
-            access_control=s3.BucketAccessControl.PUBLIC_READ,
+            public_read_access=True,
+            block_public_access=s3.BlockPublicAccess(restrict_public_buckets = False),
             website_index_document='index.html',
             website_error_document='error.html'
         )
