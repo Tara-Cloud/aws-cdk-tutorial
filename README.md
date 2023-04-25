@@ -27,8 +27,8 @@ I envision that this tutorial could be part one of a larger series where learner
 ## Constructs, Stacks, and Apps
 
 CDK applications are created using three important concepts: constructs, stacks, and apps.
-- **Constructs**: Constructs are the building blocks of your CDK application.  A construct represents a *cloud component* that will be deployed in your cloud environment.  A cloud component could be one resource - such as one [Amazon S3 bucket](https://aws.amazon.com/s3/) - or a cloud component could resprent a higher-level abstraction such as an [application load balancer fronting containers running in the Amazon Elastic Container Service](https://docs.aws.amazon.com/solutions/latest/constructs/aws-alb-fargate.html).  CDK Constructs are powerful because they can be used to define common infrastructure patterns using best practices - once defined CDK Constructs make best practice patterns easily sharable and repeatable.
-- **Stacks**: Stacks are the unit of deployment in the AWS CDK.  Every AWS resource defined using a CDK construct must be definied within the scope of a stack.  When you deploy your CDK application you will choose whether to deploy every stack in the application, only certain stacks in the application, or even multiple copies of the same stack but deployed to different environments.
+- **Constructs**: Constructs are the building blocks of your CDK application.  A construct represents a *cloud component* that will be deployed in your cloud environment.  A cloud component could be one resource - such as one [Amazon S3 bucket](https://aws.amazon.com/s3/) - or a cloud component could resprent a higher-level abstraction such as an [application load balancer fronting containers running in the Amazon Elastic Container Service](https://docs.aws.amazon.com/solutions/latest/constructs/aws-alb-fargate.html).  CDK Constructs are powerful because they can be used to define common infrastructure patterns using best practices - once defined, CDK Constructs make best practice patterns easily sharable and repeatable.
+- **Stacks**: Stacks are the unit of deployment in the AWS CDK.  Every AWS resource defined using a CDK construct must be definied within the scope of a stack.  When you deploy your CDK application you will choose whether to deploy every stack in the application, only certain stacks in the application, or even multiple copies of the same stack.
 - **Apps**: A CDK application or app is a container for one or more stacks.  Stacks within the same CDK app can exchange information with one another.  A powerful feature of CDK is automatic dependency management between stacks - if one construct in Stack A is dependent on the deployment of a construct in Stack B - CDK will automatically deploy the stacks in the neccesary order to fulfill that dependency.  
 
 ![img](readme-assets/cdk_application_diagram.png)
@@ -37,7 +37,7 @@ CDK applications are created using three important concepts: constructs, stacks,
 
 Now that we've got the basic terminology down, consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture.
 
-![img](example_serverless_architecture)
+![img](readme-assets/example_serverless_architecture.png)
 
 > :bulb: This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
 
