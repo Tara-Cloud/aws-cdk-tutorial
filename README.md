@@ -215,7 +215,7 @@ class CdkStaticWebsiteStack(Stack):
 
 This block of code imports several CDK modules and then uses those modules to model cloud infrastructure.  Specifcally, we are defining the CdkStaticWebsiteStack.  The CdkStaticWebsiteStack will include two constructs:
 - a [S3bucket construct](https://docs.aws.amazon.com/cdk/api/v1/python/aws_cdk.aws_s3/Bucket.html) configured with the neccesary settings to support static website hosting.  This construct will create a new s3 Bucket to our AWS cloud environment.
-> :rotating_light: *SECURITY ALERT* :rotating_light: Almost all S3 bucket deployments will be configured to set the block_public_access property to true.  In this project we are using a special S3 bucket configuration designed for website hosting.  It is critically important that we do not store ANY other files or obejcts in this S3 bucket other than files you want to be publicly available on a public website. :siren:
+> :rotating_light: *SECURITY ALERT* :rotating_light: Almost all S3 bucket deployments will be configured to set the block_public_access property to true.  In this project we are using a special S3 bucket configuration designed for website hosting.  It is critically important that we do not store ANY other files or obejcts in this S3 bucket other than files you want to be publicly available on a public website.
 - a [BucketDeployment construct](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_s3_deployment/BucketDeployment.html) which is used to upload assets to our newly created bucket.  In this case we will use the BucketDeployment construct to upload the html files we want to serve from our bucket.
 
 > :bulb:*Tip:* As we learn, we are copying and pasting existing code to get the feel of working with the CDK.  When you are designing and coding your own CDK applications you will use the [CDK API documentation](https://docs.aws.amazon.com/cdk/api/v1/python/modules.html) to make decisions about what code to write.  You can see examples of the CDK API documentation by clicking the S3Bucket construct and BucketDeployment construct links above.  
@@ -227,11 +227,12 @@ We do not need to make any changes to `app.py` but let's take a look at what is 
 ![img](readme-assets/app_py_from_template.png)
 
 - On line 5, we are importing the CdkStaticWebsite stack we just defined.  
-- On line 7 we instantiate our application and on line 8 we add the CdkStaticWebsite stack to our application.
-- When `app.synth()` runs on line 10, CDK will know to synthesize our application and deploy our resources.
+- On line 8 we instantiate our application and on line 9 we add the CdkStaticWebsite stack to our application.
+- When `app.synth()` runs on line 11, CDK will know to synthesize our application and deploy our resources.
 
-In our static website app we are only deploying one stack but here is an example of what `app.py` might look like for a production scale CDK application with multiple stacks.
-![img](readme-assets/production_app_py.png). 
+In our static website app we are only deploying one stack, but here is an example of what `app.py` might look like for a production scale CDK application with multiple stacks:
+
+![img](readme-assets/production_app_py.png)
 
 ## Step 5: Synthesize and Deploy our Application
 We have successfully designed our cdk application using constructs and stacks.  Let's get this website in the cloud!
@@ -247,10 +248,9 @@ Run:
 *Example Output:*
 
 #TO-DO
+![gif](readme-assets/synth_EO.gif)
 
-The output of `cdk synth` will be quite lengthy for our first deployment.  We are seeing an overview of everything that will be deployed in our AWS account when our app is deployed.  In production, it is best practice to review the output of the `cdk synth` command closely, but for the purpose of this tutorial we can move on.
-
-The `cdk synth` command synthesizes our CDK code into a CloudFormation template.  We don't need to know about CloudFormation templates for the purposes of this tutorial, but note that a new directory `cdk.out` has appeared in our project.  This is where synthesized CloudFormation templates are stored.
+The output of `cdk synth` will be quite lengthy for our first deployment.  The `cdk synth` command synthesizes our CDK code into a CloudFormation template.  We don't need to know about CloudFormation templates for the purposes of this tutorial, but note that a new directory `cdk.out` has appeared in our project.  This is where synthesized CloudFormation templates are stored.
 
 `cdk synth` will fail if we have syntax errors in our code - this is useful because we can correct errors before we try to deploy our resources rather than having a deployment fail. 
 
