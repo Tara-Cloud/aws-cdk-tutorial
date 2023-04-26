@@ -53,9 +53,14 @@ Let's say we like this serverless architecture a lot and we know our team will w
 
 Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
 
+## CDK Application Lifecycle
+
+We are about to build our first cdk application!  We will work with CDK using the command line interface.  Familiarizing yourself with common CDK commands is a great way to familiarize yourself with the overall lifecycle of a CDK application.  Take a moment to review the graphic below.  These commands are the same for Windows, Linux, and MacOS users.
+![img](readme-assets/cdk_app_lifecycle.png)
+
 ## Let's Build a CDK App!
 
-Now that we know what the AWS CDK is all about, let's get hands on and deploy our first CDK application.  In this lab we 
+Now that we know what the AWS CDK is all about, let's get hands on and deploy our first CDK application!  In this lab we 
 
 ### Pre-Requisites
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
