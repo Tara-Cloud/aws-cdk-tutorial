@@ -5,6 +5,8 @@
 
 >I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this tutorial.  
 
+![img](readme-assets/tutorial_title.png)
+
 The [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) is a framework used to define cloud infrastructure as code.  With the AWS CDK we can use our favorite object-oriented programming languages to build reliable, scalable, and secure applications in the AWS cloud without manually deploying infrastructure.
 
 ***In this tutorial we will learn:***
@@ -22,7 +24,7 @@ Once we understand what the AWS CDK is all about, we will use our new CDK skills
 - [ ] An [IDE](https://www.codecademy.com/article/what-is-an-ide) of your choice.  We will be editing code throughout this tutorial.  One great option is [VS Code](https://code.visualstudio.com/download).
 - [ ] An active AWS Account and a basic understanding of [AWS regions](https://cloudacademy.com/blog/aws-regions-and-availability-zones-the-simplest-explanation-you-will-ever-find-around/).
 - [ ] [AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
-- [ ] The AWS CLI configured with credentials for an IAM user with the `AdministratorAccess` permission policy attached.  
+- [ ] The AWS CLI configured with credentials for an IAM user with the `AdministratorAccess` permission policy attached.  [Instructions for configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).  
 
 ## The Power of CDK
 
