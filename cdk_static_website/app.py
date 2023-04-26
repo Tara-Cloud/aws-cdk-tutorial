@@ -1,4 +1,3 @@
-# type: ignore
 #!/usr/bin/env python3
 
 import aws_cdk as cdk
@@ -10,3 +9,4 @@ app = cdk.App()
 CdkStaticWebsiteStack(app, "cdk-static-website")
 
 app.synth()
+
