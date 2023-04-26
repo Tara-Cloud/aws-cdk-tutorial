@@ -4,6 +4,7 @@ from aws_cdk import (
     aws_s3 as s3, 
     aws_s3_deployment as s3_deploy,
     RemovalPolicy,
+    CfnOutput
 )
 
 class CdkStaticWebsiteStack(Stack):
@@ -18,7 +19,8 @@ class CdkStaticWebsiteStack(Stack):
             website_index_document='index.html',
             website_error_document='error.html',
             removal_policy= RemovalPolicy.DESTROY,
-            auto_delete_objects=True
+            auto_delete_objects=True,
+            server_access_logs_bucket= s3.Bucket(self, 'static_website_logging_bucket')
         )
 
         #upload the html documents from s3-assets/ directory to the s3 bucket
@@ -26,3 +28,7 @@ class CdkStaticWebsiteStack(Stack):
             sources=[s3_deploy.Source.asset("../s3-assets")],
             destination_bucket=static_website_bucket
         )
+
+        #output s3 bucket URL when stack is deployed
+        CfnOutput(self, "S3 Website Url", value=static_website_bucket.bucket_website_url)
+

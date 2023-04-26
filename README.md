@@ -294,7 +294,7 @@ from aws_cdk import (
     CfnOutput
 )
 ```
-- at the bottom of the file on line 28 add:
+- at the bottom of the file (after the S3 deployment construct) add:
 ```
 #output s3 bucket URL when stack is deployed
 CfnOutput(self, "S3 Website Url", value=static_website_bucket.bucket_website_url)
