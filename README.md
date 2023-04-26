@@ -196,6 +196,8 @@ Open the `app.py` file located in the root of our project directory.
 
 We do not need to make any changes to `app.py` but let's take a look at what is going on here.  
 
+
+
 `app.py` is the application entry point, meaning when we deploy our CDK application the deployment process will begin by running the code in `app.py`.
 
 ## Step 5: Synthesize and Deploy our Application
