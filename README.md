@@ -35,10 +35,6 @@ A CDK application defines a cloud application or cloud infrastructure configurat
 - :moneybag: **Cost Savings**: Use the AWS CDK to provision and destroy entire cloud architectures with ease.  Destroy cloud infrastructure when it's not needed to avoid paying for unnecesary resources.  Use the AWS CDK to re-deploy the exact same infrastructure in seconds when it's needed again.
 - :detective: **Best Practices Built-in**: Create and reuse patterns built using cloud best practices.  Take advantage of 1000+ high-quality [existing, open-source CDK libraries](https://constructs.dev/) to deploy common cloud infrastructure patterns.
 
-Imagine your company needs a complicated and highly secure networking architecture to be deployed in hundreds of different AWS cloud environments around the world.  Manually configuring and deploying this infrastructure hundreds of times will be time consuming, expensive, and prone to human error.  With the AWS CDK we can create one CDK application that models the network architecture perfectly. Our CDK application will be written to ensure every organizational security requirement is met.  We can then use this CDK application to deploy our networking resources in the exact same configuration in hundreds of accounts globally with a few simple commands.  If we need to update our configuration, we can use our CDK application to roll out the exact same update to every account at the same time.  We can even use our favorite CI/CD tooling to control this workflow.
-
-Imagine our company operates in some countries year-round and some countries only for half of the year.  With CDK we can tear down and redeploy our networking infrastructure as often as we want and with very little effort.  We can save a lot of money by destroying our cloud resources whenever they are not being used.  We can also use automation to redeploy our CDK resources on a schedule or based on user demand signals with no human intervention needed. Now we are starting to see the power of the AWS CDK!
-
 ## Constructs, Stacks, and Apps
 
 CDK applications are created using three important concepts: constructs, stacks, and apps.
