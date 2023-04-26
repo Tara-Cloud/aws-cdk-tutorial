@@ -3,7 +3,7 @@
 >***Author's Note:*** 
 >The intended audience for this tutorial is developers, cloud architects, and DevOps professionals who already have a basic understanding of cloud computing and have an existing AWS account.  This tutorial also assumes a basic understanding of object oriented programming.
 
->I envision that this tutorial could be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *CDK Project Structure* section of this tutorial.  
+>I envision that this tutorial to be part one of a larger series where learners could eventually build out a full scale web application following the example architecture presented in the *Constructs, Stacks, and Apps* section of this tutorial.  
 
 ![img](readme-assets/tutorial_title.png)
 
@@ -19,7 +19,7 @@ Once we understand what the AWS CDK is all about, we will use our new CDK skills
 
 **Estimated Time to Complete**: 10-15 min (not including prerequisites)
 
-**Cost**: All AWS resources deployed in this tutorial fall within the [AWS Free Tier](https://aws.amazon.com/free/free-tier-faqs/).  Make sure to follow clean up steps in 7 of this tutorial.  
+**Cost**: All AWS resources deployed in this tutorial fall within the [AWS Free Tier](https://aws.amazon.com/free/free-tier-faqs/).  Make sure to follow clean up instructions in *Step 7* of this tutorial.  
 
 ## Tutorial Pre-Requisites
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
@@ -33,21 +33,25 @@ Once we understand what the AWS CDK is all about, we will use our new CDK skills
 A CDK application defines a cloud application or cloud infrastructure configuration.  We can deploy the exact same CDK application one time or hundreds of times.  This functionality is powerful for several reasons:
 
 - :shield: **Security**: Define resuable components that are modeled to meet security best practices as well as your organization's security and compliance requirements.  Minimize human error by modeling and sharing vetted configurations via the CDK.
-- :moneybag: **Cost Savings**: Use the AWS CDK to provision and destroy entire cloud architectures with ease.  Destroy cloud infrastructure when it's not needed to avoid paying for unnecesary resources.  Use the AWS CDK to re-deploy the exact same infrastructure in seconds when it's needed again.
+- :moneybag: **Cost Savings**: Use the AWS CDK to provision and destroy entire cloud architectures with ease.  Destroy cloud infrastructure when it's not needed, and avoid paying for unnecesary resources.  Use the AWS CDK to re-deploy the exact same infrastructure in seconds when it's needed again.
 - :detective: **Best Practices Built-in**: Create and reuse patterns built using cloud best practices.  Take advantage of 1000+ high-quality [existing, open-source CDK libraries](https://constructs.dev/) to deploy common cloud infrastructure patterns.
 
 ## Constructs, Stacks, and Apps
 
 CDK applications are created using three important concepts: constructs, stacks, and apps.
-- **Constructs**: Constructs are the building blocks of your CDK application.  A construct represents a *cloud component* that will be deployed in your cloud environment.  A cloud component could be one resource - such as one [Amazon S3 bucket](https://aws.amazon.com/s3/) - or a cloud component could resprent a higher-level abstraction such as an [application load balancer fronting containers running in the Amazon Elastic Container Service](https://docs.aws.amazon.com/solutions/latest/constructs/aws-alb-fargate.html).  CDK Constructs are powerful because they can be used to define common infrastructure patterns using best practices - once defined, CDK Constructs make best practice patterns easily sharable and repeatable.
+- **Constructs**: Constructs are the building blocks of your CDK application.  A construct represents a *cloud component* that will be deployed in your cloud environment.  
+
+A cloud component could be one resource - such as one [Amazon S3 bucket](https://aws.amazon.com/s3/) - or a cloud component could resprent a higher-level abstraction such as an [application load balancer fronting containers running in the Amazon Elastic Container Service](https://docs.aws.amazon.com/solutions/latest/constructs/aws-alb-fargate.html).  
+
+CDK Constructs are powerful because they can be used to define common infrastructure patterns using best practices - once defined, CDK Constructs make best practice patterns easily sharable and repeatable.
 - **Stacks**: Stacks are the unit of deployment in the AWS CDK.  Every AWS resource defined using a CDK construct must be definied within the scope of a stack.  When you deploy your CDK application you will choose whether to deploy every stack in the application, only certain stacks in the application, or even multiple copies of the same stack.
-- **Apps**: A CDK application or app is a container for one or more stacks.  Stacks within the same CDK app can exchange information with one another.  A powerful feature of CDK is automatic dependency management between stacks - if one construct in Stack A is dependent on the deployment of a construct in Stack B - CDK will automatically deploy the stacks in the neccesary order to fulfill that dependency.  
+- **Apps**: A CDK application or app is a container for one or more stacks. 
 
 ![img](readme-assets/cdk_application_diagram.png)
 
-> :bulb:*Tip:* A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
+> :bulb:*Summary:* A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
 
-Consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture:
+Consider what CDK components ould look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture:
 
 ![img](readme-assets/example_serverless_architecture.png)
 
@@ -56,16 +60,14 @@ Consider what this architecture could look like in practice.  Perhaps we want to
 Let's say we like this serverless architecture a lot and we know our team will want to deploy many similar architectures in the future.  Or maybe we need to deploy our serverless application seperately in several different countries.  Or maybe both!  Sounds like a perfect use case for the AWS CDK.  Below is an example of how we can organize our serverless web application into a CDK application using constructs, stacks, and apps.
 
 ![img](readme-assets/cdk_application_serverless_web_app_diagram.png)
-> :bulb:*Tip:* Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  
-
-Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
+> :bulb:*Tip:* Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
 
 ## CDK Application Lifecycle
 
 We are about to build our first cdk application!  We will work with CDK using the command line interface.  Familiarizing yourself with common CDK commands is a great way to familiarize yourself with the overall lifecycle of a CDK application.  Take a moment to review the graphic below.  These commands are the same for Windows, Linux, and MacOS users.
 ![img](readme-assets/cdk_app_lifecycle.png)
 
-* *note that CloudFormation is out of scope for this tutorial but an important tool to familiarize yourself with in order to build infrastructure as code expertise.  Check out the [CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) to learn more.*
+'*' *note that CloudFormation is out of scope for this tutorial but an important tool to familiarize yourself with in order to build infrastructure as code expertise.  Check out the [CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) to learn more.*
 
 ## Let's Build a CDK App!
 
