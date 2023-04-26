@@ -194,13 +194,25 @@ This block of code imports several CDK modules and then uses those modules to mo
 
 Open the `app.py` file located in the root of our project directory.  
 
-We do not need to make any changes to `app.py` but let's take a look at what is going on here.  
+We do not need to make any changes to `app.py` but let's take a look at what is going on here.  `app.py` is the application entry point, meaning when we deploy our CDK application the deployment process will begin by running the code in `app.py`.
 
+![img](readme-assets/app_py_from_template.png)
 
+- On line 3 we import the App class from aws_cdk - we are able to do this because of the modules we installed when we ran `pip install -r requirements.txt` in step 2 of this tutorial.
+- On line 5, we are importing the CdkStaticWebsite stack we just defined.  
+- On line 7 we instantiate our application and on line 8 we add the CdkStaticWebsite stack to our application.
+- When `app.synth()` runs on line 10, CDK will know to synthesize our application and deploy our resources.
 
-`app.py` is the application entry point, meaning when we deploy our CDK application the deployment process will begin by running the code in `app.py`.
+In our static website app we are only deploying one stack but here is an example of what `app.py` might look like for a production scale CDK application with multiple stacks.
+![img](readme-assets/production_app_py.png). 
 
 ## Step 5: Synthesize and Deploy our Application
+We have successfully designed our cdk application using constructs and stacks.  Let's get this website in the cloud!
+
+Start by running the `cdk synth` command.  
+
+The CDK synth command synthesizes our CDK code into a CloudFormation template.  We don't need to know about CloudFormation templates for the purposes of this tutorial, but note that a new directory `cdk.out` has appeared in our project.  This is where synthesized CloudFormation templates are stored.
+
 ## Step 6: Update Your Application
 
 Our s3 website is looking great so far.  
