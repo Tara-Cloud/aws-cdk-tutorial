@@ -60,7 +60,7 @@ Consider what CDK components ould look like in practice.  Perhaps we want to hos
 Let's say we like this serverless architecture a lot and we know our team will want to deploy many similar architectures in the future.  Or maybe we need to deploy our serverless application seperately in several different countries.  Or maybe both!  Sounds like a perfect use case for the AWS CDK.  Below is an example of how we can organize our serverless web application into a CDK application using constructs, stacks, and apps.
 
 ![img](readme-assets/cdk_application_serverless_web_app_diagram.png)
-> :bulb:*Tip:* Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
+> :bulb:*Tip:* Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we just needed a static website with no data store or compute we could re-use only the Front End stack. If we have an individiual construct perfectly configured to meet our security requirements we can plug that construct into countless other stacks and applications.
 
 ## CDK Application Lifecycle
 
@@ -74,13 +74,13 @@ We are about to build our first cdk application!  We will work with CDK using th
 Now that we know what the AWS CDK is all about, let's get hands on and deploy our first CDK application!  In this lab we will use the AWS CDK to configure and deploy a simple static S3 website hosted in the AWS cloud. 
 > :bulb:*Tip:* Remember to review the list of pre-requisites at the beginning of the tutorial.  Every pre-requisite is mandatory.
 
-> :bulb:*Tip:* If you get stuck or lost throughout the tutorial you can refer to the code for the completed solution located in the cdk_static_website_COMPLETED directory within this repository. 
+> :bulb:*Tip:* If you get stuck or lost throughout the tutorial you can refer to the code for the completed solution located in the `cdk_static_website_COMPLETED` directory within this repository. 
 
 ## Step 1: Configure Your Dev Environment
 ### Install the AWS CDK Toolkit
 The AWS CDK Toolkit is a command-line utility that you will use to orchestrate your CDK applications.  Windows, Mac, and Linux users can install the CDK Toolkit by running the following command:
 
-*(Note: Windows users should run this command as an Aministrator and Mac/Linux users should run this command using `sudo`)*
+*Note: Windows users should run this command as an Administrator and Mac/Linux users should run this command using `sudo`*
 
 `npm install -g aws-cdk`
 
@@ -89,17 +89,26 @@ Verify your AWS CDK Toolkit installation by running
 `cdk --version`
 
 *Expected Output*:
+
 ![img](readme-assets/cdk_version_EO.png)
 
 ### Select Your Programming Language
-AWS CDK offers you the opportunity to model and deploy cloud infrastructure using your object-oriented programming language of choice - no need to learn new syntax!  CDK is currently available for TypeScript, JavaScript, Python, Java, C#, and Go with more languages to come.  
+AWS CDK offers you the opportunity to model and deploy cloud infrastructure using your object-oriented programming language of choic.  No need to learn new syntax!  CDK is currently available for TypeScript, JavaScript, Python, Java, C#, and Go with more languages to come.  
 
-Depending on your choice of programming language, you may encounter additional prequisites.  For this tutorial we will be using Python and we need the following tools installed on our system:
+Depending on your choice of programming language, you may encounter additional prerequisites.  For this tutorial we will be using Python and we need the following tools installed on our system:
 - [ ] [Python version 3.6 or greater](https://www.python.org/downloads/)
 - [ ] [Python package installer (pip)](https://pip.pypa.io/en/stable/installation/)
 
 Verify your Python installation by running 
 `python --version` or `python3 --version`
+
+*Expected Output:*
+
+```
+python3 --version
+
+Python 3.9.6
+```
 
 ![img](readme-assets/python3_version_EO.png)
 
