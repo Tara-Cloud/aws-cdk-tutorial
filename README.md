@@ -337,12 +337,13 @@ Run:
 > :bulb:*Tip:* Make sure to complete step 7 and completely destroy all resources in order to avoid incurring future AWS charges
 
 ## What to Build Next? 
-Want to keep building your skills?  There are several different AWS architecture patters you can practice implementing to make this web deploapp even better.  Read on to learn  
-- React App hosted in s3
-- level 3 s3 website construct
+Want to keep building your skills?  There are several different AWS architecture patters you can practice implementing to make this web app more secure and performative.   
+- [Deploy a Serverless Web App using S3 and API Gateway with Cognito Authentication](https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)
+- [Deploy a React App on Amazon S3](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-react-based-single-page-application-to-amazon-s3-and-cloudfront.html)
 
-## Become a Pro
+## More Great Resources for Your Learning Path:
 - [AWS CDK on GitHub](https://github.com/aws/aws-cdk)
 - [AWS CDK User Guide](https://docs.aws.amazon.com/CDK/latest/userguide)
 - [The CDK Workshop](https://cdkworkshop.com/)
 - [AWS CDK FAQs](https://aws.amazon.com/cdk/faqs/)
+- [Securing your AWS CDK Deployments](https://aws.amazon.com/blogs/devops/secure-cdk-deployments-with-iam-permission-boundaries/)
