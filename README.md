@@ -247,7 +247,6 @@ Run:
 
 *Example Output:*
 
-#TO-DO
 ![gif](readme-assets/synth_EO.gif)
 
 The output of `cdk synth` will be quite lengthy for our first deployment.  The `cdk synth` command synthesizes our CDK code into a CloudFormation template.  We don't need to know about CloudFormation templates for the purposes of this tutorial, but note that a new directory `cdk.out` has appeared in our project.  This is where synthesized CloudFormation templates are stored.
@@ -262,20 +261,18 @@ Run:
 
 `cdk deploy`
 
-#To-Do
 *Example Output:*
 
-:siren: We will be asked to review any Identity and Access Management (IAM Changes) that will be made when our cdk application is deployed.  This step adds awareness of security implications for our cloud environment resulting from this deployment.  In production we should review these changes very closely, here we can select **y** to approve the changes and deploy the stack.  
-
-#TO-DO:
-*Example Output:*
+![gif](readme-assets/deploy_EO.gif)
+> :rotating_light: *Security Alert:* :rotating_light: We will be asked to review any Identity and Access Management (IAM Changes) that will be made when our cdk application is deployed.  This step adds awareness of security implications for our cloud environment resulting from this deployment.  In production we should review these changes very closely, here we can select **y** to approve the changes and deploy the stack.  
 
 We will watch as our resources are deployed.  Upon successful deployment of the stack we are given an *Stack ARN*.  ARN stands for Amazon Resource Number and is a unique identifier within all of AWS.  If our application had deployed more than one stack, we would see multiple *Stack ARNs* displayed.  
 
-Upon successful deployment we can open the AWS console and navigate to the CloudFormation console.  The CloudFormation console allows us to view our newly deployed stack.
-> :bulb:*Tip:* Did you notice another stack in your CloudFormation console called *CDK Toolkit*?  This stack was deployed by us earlier when we ran `cdk bootstrap`.
+We can open the AWS console and navigate to the CloudFormation console.  The CloudFormation console allows us to view our newly deployed stack.
 
-#TO-DO: Console view
+![gif](readme-assets/cloudformation_console_example.gif)
+
+> :bulb:*Tip:* Did you notice another stack in your CloudFormation console called *CDK Toolkit*?  This stack was deployed by us earlier when we ran `cdk bootstrap`.
 
 ## Step 6: Update Your Application
 
