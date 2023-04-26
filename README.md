@@ -18,7 +18,8 @@ The [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) is a fram
 Once we understand what the AWS CDK is all about, we will use our new CDK skills to deploy a website to the cloud!
 
 **Estimated Time to Complete**: 10-15 min (not including prerequisites)
-**Cost**: All AWS resources deployed in this tutorial fall within the [AWS Free Tier](https://aws.amazon.com/free/free-tier-faqs/)
+
+**Cost**: All AWS resources deployed in this tutorial fall within the [AWS Free Tier](https://aws.amazon.com/free/free-tier-faqs/).  Make sure to follow clean up steps in 7 of this tutorial.  
 
 ## Tutorial Pre-Requisites
 - [ ] [Node.js (>= 10.13.0, except for versions 13.0.0 - 13.6.0)](https://nodejs.org/en)
