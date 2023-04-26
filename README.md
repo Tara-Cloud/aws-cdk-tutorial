@@ -45,18 +45,18 @@ CDK applications are created using three important concepts: constructs, stacks,
 
 ![img](readme-assets/cdk_application_diagram.png)
 
-> :bulb: A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
+> :bulb:*Tip:* A CDK application (or app) is a container for multiple stacks.  A CDK stack is a container for multiple CDK constructs.  CDK constructs represent a cloud component that will be deployed to your cloud environment.
 
 Consider what this architecture could look like in practice.  Perhaps we want to host a [serverless web application](https://catalog.us-east-1.prod.workshops.aws/workshops/b0c6ad36-0a4b-45d8-856b-8a64f0ac76bb/en-US) in the cloud.  Here is an example of a typical serverless architecture:
 
 ![img](readme-assets/example_serverless_architecture.png)
 
-> :bulb: This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
+> :bulb:*Tip:* This application is serverless because it can be built and maintained without provisioning and maintaining servers.  All server management is abstracted away by AWS.
 
 Let's say we like this serverless architecture a lot and we know our team will want to deploy many similar architectures in the future.  Or maybe we need to deploy our serverless application seperately in several different countries.  Or maybe both!  Sounds like a perfect use case for the AWS CDK.  Below is an example of how we can organize our serverless web application into a CDK application using constructs, stacks, and apps.
 
 ![img](readme-assets/cdk_application_serverless_web_app_diagram.png)
-> :bulb: Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  
+> :bulb:*Tip:* Remember that when we deploy our application we can choose whether to deploy every stack or just some stacks.  We could deploy all three stacks first our first application deployment and then only re-deploy the Front End or Compute stack as needed during sebsequent deployments while leaving the database stack untouched.  
 
 Apps, stacks, and constructs promote modularity and re-use.  If we wanted to deploy a different website with the same architecture, we could re-use the entire CDK application.   If we had a different application where we just needed a static website with no data store or compute logic we could re-use only our Front End stack from this CDK app with no problem. If we have an individiual construct perfectly configured to meet our security requirements we can easily plug that construct into countless other stacks and applications.
 
@@ -70,7 +70,9 @@ We are about to build our first cdk application!  We will work with CDK using th
 ## Let's Build a CDK App!
 
 Now that we know what the AWS CDK is all about, let's get hands on and deploy our first CDK application!  In this lab we will use the AWS CDK to configure and deploy a simple static S3 website hosted in the AWS cloud. 
-> :bulb: Remember to review the list of pre-requisites at the beginning of the tutorial.  Every pre-requisite is mandatory.
+> :bulb:*Tip:* Remember to review the list of pre-requisites at the beginning of the tutorial.  Every pre-requisite is mandatory.
+
+> :bulb:*Tip:* If you get stuck or lost throughout the tutorial you can refer to the code for the completed solution located in the cdk_static_website_COMPLETED directory within this repository. 
 
 ## Step 1: Configure Your Dev Environment
 ### Install the AWS CDK Toolkit
@@ -167,7 +169,7 @@ Remember that the unit of deployment in the AWS CDK is called a ***stack***.  Wi
 
 ![img](readme-assets/cdk_static_website_stack%20_init_view.png)
 
-> :bulb: If your IDE gives you warnings like `Import "aws_cdk" could not be resolved` the most likely cause is a IDE miconfiguration related to your Python interpreter.  Fixing this is out of scope for this tutorial, however you can safely ignore these warnings as long you have followed all the previous instructions correctly. 
+> :bulb:*Tip:* If your IDE gives you warnings like `Import "aws_cdk" could not be resolved` the most likely cause is a IDE miconfiguration related to your Python interpreter.  Fixing this is out of scope for this tutorial, however you can safely ignore these warnings as long you have followed all the previous instructions correctly. 
 
 This example code will deploy two AWS resources: a [Amazon SQS Queue](https://aws.amazon.com/sqs/) and a [Amazon SNS Topic](https://aws.amazon.com/sns/).  
 
@@ -209,7 +211,7 @@ This block of code imports several CDK modules and then uses those modules to mo
 > :siren: *SECURITY ALERT* : Almost all S3 bucket deployments will be configured to set the block_public_access property to true.  In this project we are using a special S3 bucket configuration designed for website hosting.  It is critically important that we do not store ANY other files or obejcts in this S3 bucket other than files you want to be publicly available on a public website. :siren:
 - a [BucketDeployment construct](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_s3_deployment/BucketDeployment.html) which is used to upload assets to our newly created bucket.  In this case we will use the BucketDeployment construct to upload the html files we want to serve from our bucket.
 
-> :bulb: *tip* As we learn, we are copying and pasting existing code to get the feel of working with the CDK.  When you are designing and coding your own CDK applications you will use the [CDK API documentation](https://docs.aws.amazon.com/cdk/api/v1/python/modules.html) to make decisions about what code to write.  You can see examples of the CDK API documentation by clicking the S3Bucket construct and BucketDeployment construct links above.  
+> :bulb:*Tip:* As we learn, we are copying and pasting existing code to get the feel of working with the CDK.  When you are designing and coding your own CDK applications you will use the [CDK API documentation](https://docs.aws.amazon.com/cdk/api/v1/python/modules.html) to make decisions about what code to write.  You can see examples of the CDK API documentation by clicking the S3Bucket construct and BucketDeployment construct links above.  
 
 Open the `app.py` file located in the root of our project directory.  
 
@@ -262,7 +264,7 @@ Run:
 We will watch as our resources are deployed.  Upon successful deployment of the stack we are given an *Stack ARN*.  ARN stands for Amazon Resource Number and is a unique identifier within all of AWS.  If our application had deployed more than one stack, we would see multiple *Stack ARNs* displayed.  
 
 Upon successful deployment we can open the AWS console and navigate to the CloudFormation console.  The CloudFormation console allows us to view our newly deployed stack.
-> :bulb: Did you notice another stack in your CloudFormation console called *CDK Toolkit*?  This stack was deployed by us earlier when we ran `cdk bootstrap`.
+> :bulb:*Tip:* Did you notice another stack in your CloudFormation console called *CDK Toolkit*?  This stack was deployed by us earlier when we ran `cdk bootstrap`.
 
 #TO-DO: Console view
 
@@ -318,7 +320,7 @@ Don't forget to select *y* when prompted in order to approve the deployment of o
 ![img](readme-assets/deploy_changes_success_EO.png)
 
 Awesome!  Now we can click on the link outputted in our terminal and see our brand new *Hello World* website deployed using the AWS CDK.  
-> :bulb: Curious about the error.html document we references in our S3 bucket configuration?  Append error.html to the end of our S3 Website URL and see what happens.  Because we correctly configured our S3 Bucket construct, our bucket is already set up to route web traffic as if it was a traditional web server.  If a user enters an invalid URL, they will be redirected to either the index.html or error.html files we deployed to our bucket using CDK.  
+> :bulb:*Tip:* Curious about the error.html document we references in our S3 bucket configuration?  Append error.html to the end of our S3 Website URL and see what happens.  Because we correctly configured our S3 Bucket construct, our bucket is already set up to route web traffic as if it was a traditional web server.  If a user enters an invalid URL, they will be redirected to either the index.html or error.html files we deployed to our bucket using CDK.  
 
 ![img](readme-assets/website_hello_world_EO.png) ![img](readme-assets/error_page_EO.png)
 
@@ -332,7 +334,7 @@ Run:
 
 *Expected Output*:
 
-> :bulb: Make sure to complete step 7 and completely destroy all resources in order to avoid incurring future AWS charges
+> :bulb:*Tip:* Make sure to complete step 7 and completely destroy all resources in order to avoid incurring future AWS charges
 
 ## What to Build Next? 
 Want to keep building your skills?  There are several different AWS architecture patters you can practice implementing to make this web deploapp even better.  Read on to learn  
