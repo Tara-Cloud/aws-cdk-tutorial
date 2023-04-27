@@ -25,6 +25,7 @@ APM & Continuous Profiler
 App Analytics
 App Service
 AppVeyor
+ARNs
 AuthN
 Autodiscovery
 AWS Step Functions
