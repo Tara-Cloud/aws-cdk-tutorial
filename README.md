@@ -33,7 +33,7 @@ Once you understand what the AWS CDK is all about, you will use your new skills 
 A CDK application defines a cloud application or cloud infrastructure configuration. You can deploy the same CDK application once or hundreds of times. This functionality is powerful for several reasons:
 
 - :shield: **Security**: Define reusable components modeled to meet security best practices and your organization's security and compliance requirements. Minimize human error by modeling and sharing vetted configurations with the CDK.
-- :moneybag: **Cost Savings**: Use the AWS CDK to provision and destroy entire cloud architectures quickly. Destroy cloud infrastructure when it's not needed, and avoid paying for unnecessary resources. Use the AWS CDK to redeploy the same infrastructure in seconds as needed.
+- :moneybag: **Cost Savings**: Use the AWS CDK to provision and destroy entire cloud architectures quickly. Destroy cloud infrastructure when it's not needed, and avoid paying for unnecessary resources. Use the AWS CDK to redeploy the same infrastructure in seconds.
 - :detective: **Best Practices Built-in**: Create and reuse patterns built using cloud best practices. Use 1000+ high-quality [existing, open-source CDK libraries](https://constructs.dev/) to deploy common cloud infrastructure patterns.
 
 ## Constructs, stacks, and apps
