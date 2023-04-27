@@ -249,7 +249,7 @@ You can open the AWS console and navigate to the CloudFormation console. The Clo
 
 > :bulb:*Tip:* Did you notice another stack in your CloudFormation console called *CDK Toolkit*? This stack was deployed by you earlier when you ran `cdk bootstrap`.
 
-## Step 6:update your application
+## Step 6: Update your application
 
 Your CDK application deployment succeeded, and your S3 Website is live and running. You can manually find the address of your new website using the S3 console within AWS, but that's a pain. Wouldn't getting the website address as an output once your stack is deployed be better?  
 
@@ -312,7 +312,7 @@ Awesome! Now you can click on the link output in your terminal and see your bran
 
 ![img](readme-assets/website_hello_world_EO.png) ![img](readme-assets/error_page_EO.png)
 
-## Step 7:destroy your application
+## Step 7: Destroy your application
 
 It's time to practice the last step of the CDK application lifecycle and tear down your application. Delete every resource at once by destroying the entire CDK stack.
 
