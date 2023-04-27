@@ -41,3 +41,5 @@ You may wish to review the Datadog Learning Center (https://learn.datadoghq.com)
 Your work will be evaluated based on the technical complexity of the topic, accuracy of the content, how well it is taught to the target audience in 10 minutes, how well the content meets the learning objectives, and how it all fits together.
 
 If you have any questions at all, communicate with your Datadog recruiter.
+
+very
